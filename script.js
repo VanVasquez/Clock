@@ -1,10 +1,12 @@
 const clock = document.querySelector('#time');
-const time = document.createElement('span');
-time.classList.add('glow');
-function startTime() {
+const span = document.createElement('span');
+span.classList.add('glow');
+
+function update() {
 	const date = new Date();
-	time.innerText = date.toLocaleTimeString();
-	clock.append(time);
-	setTimeout(startTime, 1000);
+	const time = date.toLocaleTimeString();
+	span.innerText = time;
+	clock.append(span);
+	window.requestAnimationFrame(update);
 }
-startTime();
+update();
